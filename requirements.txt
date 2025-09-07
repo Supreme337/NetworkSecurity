@@ -6,5 +6,6 @@ pymongo
 seaborn
 flask
 certifi
+pymongo[srv]
 
--e .
+##-e .

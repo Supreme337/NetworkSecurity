@@ -7,5 +7,5 @@ seaborn
 flask
 certifi
 pymongo[srv]
-
+scikit-learn
 ##-e .

@@ -8,4 +8,5 @@ flask
 certifi
 pymongo[srv]
 scikit-learn
+pyaml
 ##-e .

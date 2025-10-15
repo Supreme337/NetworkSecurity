@@ -60,7 +60,7 @@ async def predict_route(request:Request,file:UploadFile=File(...)):
         network_model=NetworkModel(model=final_model,preprocessor=preprocessor)
         print(df.iloc[0])
         y_pred=network_model.predict(df)
-        predict(y_pred)
+        print(y_pred)
         df['predicted_column']=y_pred
         print(df['predicted_column'])
         df.to_csv('prediction_output/output.csv')

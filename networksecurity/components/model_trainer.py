@@ -8,7 +8,7 @@ from networksecurity.utils.ml_utils.model.estimator import NetworkModel
 from networksecurity.utils.main_utils.utils import save_object,load_object
 from networksecurity.utils.main_utils.utils import load_numpy_array_data,evaluate_models
 from networksecurity.utils.ml_utils.metric.classification_metric import get_classification_score
-
+from urllib.parse import urlparse
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsClassifier
@@ -25,16 +25,43 @@ class ModelTrainer:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
     
-    def track_mlflow(self,best_model,classificationmetric):
+    def track_mlflow(self, best_model, classificationmetric):
+   
         with mlflow.start_run():
-            f1_score=classificationmetric.f1_score
-            precision_score=classificationmetric.precision_score
-            recall_score=classificationmetric.recall_score
-            mlflow.log_metric("f1_score",f1_score)
-            mlflow.log_metric("precision_score",precision_score)
-            mlflow.log_metric("recall_score",recall_score)
-            mlflow.sklearn.log_model(best_model,"model")
-              
+            # Extract metrics
+            f1 = classificationmetric.f1_score
+            precision = classificationmetric.precision_score
+            recall = classificationmetric.recall_score
+
+            # Log metrics
+            mlflow.log_metric("f1_score", f1)
+            mlflow.log_metric("precision_score", precision)
+            mlflow.log_metric("recall_score", recall)
+
+            # Identify the tracking URI type
+            tracking_uri = mlflow.get_tracking_uri()
+            tracking_scheme = urlparse(tracking_uri).scheme
+
+            # If DagsHub or remote https server, log as a local artifact instead
+            if "dagshub" in tracking_uri.lower() or tracking_scheme in ["http", "https"]:
+                import joblib, tempfile
+                import os
+
+                # Save model to a temporary file
+                with tempfile.TemporaryDirectory() as tmpdir:
+                    model_path = os.path.join(tmpdir, "model.pkl")
+                    joblib.dump(best_model, model_path)
+                    mlflow.log_artifact(model_path, artifact_path="model")
+
+                logging.info("Model logged as an artifact (DagsHub-compatible).")
+
+            else:
+                # Local MLflow supports sklearn model format
+                mlflow.sklearn.log_model(best_model, "model")
+                logging.info("Model logged as sklearn model (local MLflow).")
+
+    
+
 
     def train_model(self,x_train,x_test,y_train,y_test):
         models={"Random Forest": RandomForestClassifier(verbose=1),

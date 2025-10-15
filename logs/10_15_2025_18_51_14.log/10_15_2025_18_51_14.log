@@ -1,0 +1,38 @@
+[ 2025-10-15 18:51:19,164 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-10-15 18:51:19,167 ] 107  dagshub - INFO - Accessing as Supreme337
+[ 2025-10-15 18:51:20,604 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Supreme337/NetworkSecurity "HTTP/1.1 200 OK"
+[ 2025-10-15 18:51:21,721 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-10-15 18:51:21,723 ] 107  dagshub - INFO - Initialized MLflow to track repo "Supreme337/NetworkSecurity"
+[ 2025-10-15 18:51:21,723 ] 107  dagshub - INFO - Repository Supreme337/NetworkSecurity initialized!
+[ 2025-10-15 18:51:21,723 ] 20  root - INFO - Initiate the data ingestion
+[ 2025-10-15 18:51:29,636 ] 60  root - INFO - Performed train test split on the dataframe
+[ 2025-10-15 18:51:29,636 ] 61  root - INFO - Exited split_data_as_train_test method of Data_Ingestion class
+[ 2025-10-15 18:51:29,636 ] 65  root - INFO - Exporting train and test file path.
+[ 2025-10-15 18:51:29,679 ] 69  root - INFO - Exported train and test file path.
+[ 2025-10-15 18:51:29,679 ] 22  root - INFO - Data Initiation Completed
+[ 2025-10-15 18:51:29,684 ] 26  root - INFO - Initiate the data Validation
+[ 2025-10-15 18:51:29,724 ] 30  root - INFO - No. of columns required for validation:2
+[ 2025-10-15 18:51:29,724 ] 31  root - INFO - No of columns in dataframe31
+[ 2025-10-15 18:51:29,724 ] 30  root - INFO - No. of columns required for validation:2
+[ 2025-10-15 18:51:29,724 ] 31  root - INFO - No of columns in dataframe31
+[ 2025-10-15 18:51:29,820 ] 28  root - INFO - data Validation Completed
+[ 2025-10-15 18:51:29,821 ] 31  root - INFO - data Transformation started
+[ 2025-10-15 18:51:29,821 ] 47  root - INFO - Started Data Trasnformation
+[ 2025-10-15 18:51:29,835 ] 36  root - INFO - Entered get_data_trnasformer_object method of Transformation class
+[ 2025-10-15 18:51:29,836 ] 39  root - INFO - Initialize KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-10-15 18:51:29,842 ] 39  root - INFO - Entered the save_object method of MainUtils class
+[ 2025-10-15 18:51:29,844 ] 43  root - INFO - Exited the save_object method of MainUtils class
+[ 2025-10-15 18:51:29,844 ] 39  root - INFO - Entered the save_object method of MainUtils class
+[ 2025-10-15 18:51:29,845 ] 43  root - INFO - Exited the save_object method of MainUtils class
+[ 2025-10-15 18:51:29,846 ] 35  root - INFO - data Transformation completed
+[ 2025-10-15 18:51:29,846 ] 37  root - INFO - Model Training started
+[ 2025-10-15 18:51:29,859 ] 143  root - INFO - Starting model training...
+[ 2025-10-15 19:01:20,826 ] 56  root - INFO - Model logged as an artifact (DagsHub-compatible).
+[ 2025-10-15 19:03:48,723 ] 56  root - INFO - Model logged as an artifact (DagsHub-compatible).
+[ 2025-10-15 19:03:49,495 ] 39  root - INFO - Entered the save_object method of MainUtils class
+[ 2025-10-15 19:03:49,525 ] 43  root - INFO - Exited the save_object method of MainUtils class
+[ 2025-10-15 19:03:49,525 ] 39  root - INFO - Entered the save_object method of MainUtils class
+[ 2025-10-15 19:03:49,554 ] 43  root - INFO - Exited the save_object method of MainUtils class
+[ 2025-10-15 19:03:49,554 ] 123  root - INFO - Model trainer artifact:ModelTrainerArtifact(trained_model_file_path='Artifacts\\10_15_2025_18_51_15\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9910768606773473, precision_score=0.9886708476633623, recall_score=0.9934946127261639), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9778672032193159, precision_score=0.9743384121892542, recall_score=0.981421647819063))
+[ 2025-10-15 19:03:49,557 ] 145  root - INFO - Model training completed successfully.
+[ 2025-10-15 19:03:49,557 ] 42  root - INFO - Model Training artifact created

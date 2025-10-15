@@ -8,7 +8,7 @@ class NetworkModel:
     def __init__(self,preprocessor,model):
         try:
             self.preprocessor=preprocessor
-            self.model=mode
+            self.model=model
         except Exception as e:
             raise NetworkSecurityException(e,sys)
 

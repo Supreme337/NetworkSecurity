@@ -1,0 +1,7 @@
+[ 2025-10-15 00:48:33,022 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-10-15 00:48:33,033 ] 107  dagshub - INFO - Accessing as Supreme337
+[ 2025-10-15 00:48:34,661 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Supreme337/NetworkSecurity "HTTP/1.1 200 OK"
+[ 2025-10-15 00:48:35,985 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-10-15 00:48:35,987 ] 107  dagshub - INFO - Initialized MLflow to track repo "Supreme337/NetworkSecurity"
+[ 2025-10-15 00:48:35,987 ] 107  dagshub - INFO - Repository Supreme337/NetworkSecurity initialized!
+[ 2025-10-15 00:48:35,988 ] 20  root - INFO - Initiate the data ingestion

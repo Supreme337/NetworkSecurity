@@ -1,0 +1,1 @@
+[ 2025-10-14 22:44:17,940 ] 1025  httpx - INFO - HTTP Request: POST https://dagshub.com/login/oauth/middleman "HTTP/1.1 504 Gateway Time-out"

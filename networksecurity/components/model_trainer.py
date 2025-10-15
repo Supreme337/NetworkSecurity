@@ -25,7 +25,7 @@ class ModelTrainer:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
     
-    def track_mlflow(self,best_model_classificationmetric):
+    def track_mlflow(self,best_model,classificationmetric):
         with mlflow.start_run():
             f1_score=classificationmetric.f1_score
             precision_score=classificationmetric.precision_score
@@ -33,7 +33,7 @@ class ModelTrainer:
             mlflow.log_metric("f1_score",f1_score)
             mlflow.log_metric("precision_score",precision_score)
             mlflow.log_metric("recall_score",recall_score)
-            mlflow.log_model(best_model,"model")
+            mlflow.sklearn.log_model(best_model,"model")
               
 
     def train_model(self,x_train,x_test,y_train,y_test):
@@ -97,16 +97,27 @@ class ModelTrainer:
         return model_trainer_artifact
                      
 
-    def initiate_model_trainer(self)->ModelTrainerArtifact:
-        train_file_path=self.data_transformation_artifact.transformed_train_file_path
-        test_file_path=self.data_transformation_artifact.transformed_test_file_path
+    def initiate_model_trainer(self) -> ModelTrainerArtifact:
+        try:
+            train_file_path = self.data_transformation_artifact.transformed_train_file_path
+            test_file_path = self.data_transformation_artifact.transformed_test_file_path
 
-        train_arr=load_numpy_array_data(train_file_path)
-        test_arr=load_numpy_array_data(test_file_path)
+            train_arr = load_numpy_array_data(train_file_path)
+            test_arr = load_numpy_array_data(test_file_path)
 
-        x_train,y_train,x_test,y_test=(
-            train_arr[:,:-1],
-            train_arr[:,-1],
-            test_arr[:,:-1],
-            test_arr[:,-1],
-        )           
+
+            x_train, y_train, x_test, y_test = (
+                train_arr[:, :-1],
+                train_arr[:, -1],
+                test_arr[:, :-1],
+                test_arr[:, -1],
+        )
+
+            logging.info("Starting model training...")
+            model_trainer_artifact = self.train_model(x_train, x_test, y_train, y_test)
+            logging.info("Model training completed successfully.")
+            return model_trainer_artifact
+
+        except Exception as e:
+            raise NetworkSecurityException(e, sys)
+           

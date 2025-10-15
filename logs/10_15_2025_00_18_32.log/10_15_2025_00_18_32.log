@@ -1,0 +1,29 @@
+[ 2025-10-15 00:18:40,861 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-10-15 00:18:40,870 ] 107  dagshub - INFO - Accessing as Supreme337
+[ 2025-10-15 00:18:42,607 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/Supreme337/NetworkSecurity "HTTP/1.1 200 OK"
+[ 2025-10-15 00:18:44,169 ] 1025  httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[ 2025-10-15 00:18:44,171 ] 107  dagshub - INFO - Initialized MLflow to track repo "Supreme337/NetworkSecurity"
+[ 2025-10-15 00:18:44,172 ] 107  dagshub - INFO - Repository Supreme337/NetworkSecurity initialized!
+[ 2025-10-15 00:18:44,172 ] 20  root - INFO - Initiate the data ingestion
+[ 2025-10-15 00:18:49,558 ] 60  root - INFO - Performed train test split on the dataframe
+[ 2025-10-15 00:18:49,558 ] 61  root - INFO - Exited split_data_as_train_test method of Data_Ingestion class
+[ 2025-10-15 00:18:49,559 ] 65  root - INFO - Exporting train and test file path.
+[ 2025-10-15 00:18:49,672 ] 69  root - INFO - Exported train and test file path.
+[ 2025-10-15 00:18:49,673 ] 22  root - INFO - Data Initiation Completed
+[ 2025-10-15 00:18:49,693 ] 26  root - INFO - Initiate the data Validation
+[ 2025-10-15 00:18:49,751 ] 30  root - INFO - No. of columns required for validation:2
+[ 2025-10-15 00:18:49,752 ] 31  root - INFO - No of columns in dataframe31
+[ 2025-10-15 00:18:49,752 ] 30  root - INFO - No. of columns required for validation:2
+[ 2025-10-15 00:18:49,752 ] 31  root - INFO - No of columns in dataframe31
+[ 2025-10-15 00:18:49,992 ] 28  root - INFO - data Validation Completed
+[ 2025-10-15 00:18:49,993 ] 31  root - INFO - data Transformation started
+[ 2025-10-15 00:18:49,993 ] 47  root - INFO - Started Data Trasnformation
+[ 2025-10-15 00:18:50,043 ] 36  root - INFO - Entered get_data_trnasformer_object method of Transformation class
+[ 2025-10-15 00:18:50,043 ] 39  root - INFO - Initialize KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-10-15 00:18:50,063 ] 39  root - INFO - Entered the save_object method of MainUtils class
+[ 2025-10-15 00:18:50,065 ] 43  root - INFO - Exited the save_object method of MainUtils class
+[ 2025-10-15 00:18:50,065 ] 39  root - INFO - Entered the save_object method of MainUtils class
+[ 2025-10-15 00:18:50,068 ] 43  root - INFO - Exited the save_object method of MainUtils class
+[ 2025-10-15 00:18:50,070 ] 35  root - INFO - data Transformation completed
+[ 2025-10-15 00:18:50,070 ] 37  root - INFO - Model Training started
+[ 2025-10-15 00:18:50,072 ] 116  root - INFO - Starting model training...

@@ -48,7 +48,7 @@ class TrainingPipeline:
             data_transformation=DataTransformation(data_validation_artifact=data_validation_artifact,
             data_transformation_config=data_transformation_config)
             data_transformation_artifact=data_transformation.initiate_data_transformation()
-            return data_trasnformation_artifact
+            return data_transformation_artifact
         except Exception as e:
             raise NetworkSecurityException(e,sys)
 

@@ -25,20 +25,14 @@ class ModelTrainer:
         except Exception as e:
             raise NetworkSecurityException(e,sys)
     
-    def track_mlflow(self, best_model, classificationmetric):
-   
+    def track_mlflow(self,best_model,classificationmetric):
         with mlflow.start_run():
-            # Extract metrics
             f1 = classificationmetric.f1_score
             precision = classificationmetric.precision_score
             recall = classificationmetric.recall_score
-
-            # Log metrics
             mlflow.log_metric("f1_score", f1)
             mlflow.log_metric("precision_score", precision)
             mlflow.log_metric("recall_score", recall)
-
-            # Identify the tracking URI type
             tracking_uri = mlflow.get_tracking_uri()
             tracking_scheme = urlparse(tracking_uri).scheme
 
@@ -56,12 +50,8 @@ class ModelTrainer:
                 logging.info("Model logged as an artifact (DagsHub-compatible).")
 
             else:
-                # Local MLflow supports sklearn model format
                 mlflow.sklearn.log_model(best_model, "model")
                 logging.info("Model logged as sklearn model (local MLflow).")
-
-    
-
 
     def train_model(self,x_train,x_test,y_train,y_test):
         models={"Random Forest": RandomForestClassifier(verbose=1),
@@ -85,7 +75,7 @@ class ModelTrainer:
                 'learning_rate':[.1,.01,.05,.001],
                 'subsample':[0.6,0.7,0.75,0.85,0.9],
                 'criterion':['squared_error', 'friedman_mse'],
-                'max_features':['auto','sqrt','log2'],
+                'max_features':['sqrt','log2',None],
                 'n_estimators': [8,16,32,64,128,256]
             },
             "Logistic Regression":{},

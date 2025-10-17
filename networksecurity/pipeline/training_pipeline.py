@@ -17,9 +17,14 @@ from networksecurity.entity.artifact_entity import(
     DataTransformationArtifact,
     DataValidationArtifact,ModelTrainerArtifact,
 )
+from networksecurity.constant.training_pipeline import TRAINING_BUCKET_NAME
+from networksecurity.cloud.s3_syncer import S3Sync 
+from networksecurity.constant.training_pipeline import SAVED_MODEL_DIR  
+
 class TrainingPipeline:
     def __init__(self):
         self.training_pipeline_config=TrainingPipelineConfig()
+        self.s3_sync=S3Sync()
 
     def start_data_ingestion(self):
         try:

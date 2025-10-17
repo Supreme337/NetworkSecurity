@@ -13,4 +13,6 @@ mlflow
 dagshub
 fastapi
 uvicorn
+streamlit
+
 ##-e .
